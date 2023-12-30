@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <table>
+        <tr>
+            {% for col in fields %}
+            <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+        {% for row in data %}
+        <tr>
+            {% for col, row_ in zip(fields, row) %}
+            {% if col == "Link" %}
+            <td>
+                <a href={{ row_}} target="_blank" >{{ row_ }}</button>
+            </td>
+            {% elif col == "Start Time" %}
+            <td>{{ row_.strftime('%d-%m-%Y, %I:%M %p') }}</td>
+            {% else %}
+            <td>{{row_}}</td>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    
+    </table>
+</body>
+</html>
